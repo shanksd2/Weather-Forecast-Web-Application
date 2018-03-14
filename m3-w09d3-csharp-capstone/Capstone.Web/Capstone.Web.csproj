@@ -159,12 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-<<<<<<< HEAD
     <Folder Include="Models\" />
-=======
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
->>>>>>> d55432866adcf3ff7361edd8a3b34677184e9556
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
