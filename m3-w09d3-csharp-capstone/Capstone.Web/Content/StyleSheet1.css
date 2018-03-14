@@ -16,3 +16,10 @@
 .container park name{
 
 }
+
+header {
+    margin: 25px;
+}
+header img {
+    height: 110px;
+}
