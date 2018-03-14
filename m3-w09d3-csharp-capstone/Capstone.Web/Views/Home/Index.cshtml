@@ -2,6 +2,11 @@
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+@using Capstone.Web.Models;
+@model List<Park>
+
+
+
 
 <!DOCTYPE html>
 
@@ -9,17 +14,28 @@
 
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
 </head>
 
 <body>
-    <div>
-        <div class="container">
 
-            <div class="container park image"></div>
-            <div class="container park details"></div>
-            <div class="container park name"></div>
-        </div>
+    <div>
+
+        @foreach (Park item in Model)
+        {
+            string imageName = "../Content/img/" + item.ParkCode;
+
+            <div class="list-group">
+                <div class="list-group-item">
+                    <a href="~/Home/Index/@item.ParkCode">
+                <img class="listImage" src="@imageName" alt="Park"/>
+                </a>
+                </div>
+            </div>
+
+
+            <p>@item.ParkName</p>
+            <p>@item.ParkDescription</p>
+        }
 
     </div>
 </body>
