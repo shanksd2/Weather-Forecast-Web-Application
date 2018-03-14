@@ -25,5 +25,7 @@ namespace Capstone.Web.Controllers
             Park detailedPark = dal.DetailPark(parkCode);
             return View(detailedPark);
         }
+
+      
     }
 }

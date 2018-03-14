@@ -154,11 +154,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\ForeCastSQLDAL.cs" />
     <Compile Include="DAL\ParkSQLDAL.cs" />
+    <Compile Include="DAL\SurveySQLDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ForeCast.cs" />
     <Compile Include="Models\Park.cs" />
+    <Compile Include="Models\Survey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +170,7 @@
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Survey.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
