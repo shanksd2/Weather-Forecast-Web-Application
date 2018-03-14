@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Capstone.Web.Models;
+using Capstone.Web.DAL;
 
 namespace Capstone.Web.Controllers
 {
@@ -12,7 +14,16 @@ namespace Capstone.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View("Index");
+            ParkSQLDAL sql = new ParkSQLDAL();
+            List<Park> allParks = sql.GetAllParks();
+            return View("Index", allParks);
+        }
+
+        public ActionResult Detail(string parkCode)
+        {
+            ParkSQLDAL dal = new ParkSQLDAL();
+            Park detailedPark = dal.DetailPark(parkCode);
+            return View(detailedPark);
         }
     }
 }
