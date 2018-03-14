@@ -53,7 +53,7 @@ namespace Capstone.Web.DAL
                 throw;
             }
         }
-        public Park DetailPark(Park park)
+        public Park DetailPark(string parkCode)
         {
             Park parkDetailed = new Park();
 
@@ -63,7 +63,7 @@ namespace Capstone.Web.DAL
                 {
                     connection.Open();
                     SqlCommand cmd = new SqlCommand(SQL_DetailedParkView, connection);
-                    cmd.Parameters.AddWithValue("@parkCode", park.ParkCode);
+                    cmd.Parameters.AddWithValue("@parkCode", parkCode);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

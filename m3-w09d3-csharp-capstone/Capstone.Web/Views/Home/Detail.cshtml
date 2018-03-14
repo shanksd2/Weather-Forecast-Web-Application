@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@using Capstone.Web.Models
+@model Park
+    @{ string imagePath = "~/Content/img/" + Model.ParkCode + ".jpg";}
+
+<div>
+    <img src= @imagePath />
+</div>
+<div>@Model.ParkName</div>
+<div>@Model.State</div>
+<div>
+    <table>
+        <tr>
+            <td><strong>Acreage</strong></td>
+            <td>@Model.Acreage</td>
+        </tr>
+        <tr>
+            <td><strong>Elevation</strong></td>
+            <td>@Model.ElevationInFeet ft.</td>
+        </tr>
+        <tr>
+            <td><strong>Miles of Trail</strong></td>
+            <td>@Model.MilesOfTrail miles</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td><strong># of Campsites</strong></td>
+            <td>@Model.NumberOfCampsites</td>
+        </tr>
+        <tr>
+            <td><strong>Climate</strong></td>
+            <td>@Model.Climate ft.</td>
+        </tr>
+        <tr>
+            <td><strong>Year Founded</strong></td>
+            <td>@Model.YearFounded miles</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td><strong>Annual Visitors</strong></td>
+            <td>@Model.AnnualVisitorCount</td>
+        </tr>
+        <tr>
+            <td><strong># Animal Species</strong></td>
+            <td>@Model.NumberOfAnimalSpecies ft.</td>
+        </tr>
+        <tr>
+            <td><strong>Entry Fee</strong></td>
+            <td>@Model.EntryFee.ToString("C2") miles</td>
+        </tr>
+    </table>
+</div>
+<div>@Model.ParkDescription</div>
+<div>@Model.InspirationalQuote @Model.QuoteSource</div>
+
