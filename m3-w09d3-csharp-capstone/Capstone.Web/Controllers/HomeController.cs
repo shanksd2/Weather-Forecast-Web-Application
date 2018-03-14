@@ -19,11 +19,11 @@ namespace Capstone.Web.Controllers
             return View("Index", allParks);
         }
 
-        public ActionResult Detail(string parkCode)
+        public ActionResult Detail(string id)
         {
             ParkSQLDAL dal = new ParkSQLDAL();
-            Park detailedPark = dal.DetailPark(parkCode);
-            return View(detailedPark);
+            Park detailedPark = dal.DetailPark(id);
+            return View("Detail", detailedPark);
         }
 
       
