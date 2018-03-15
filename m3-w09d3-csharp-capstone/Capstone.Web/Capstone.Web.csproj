@@ -170,7 +170,7 @@
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\Home\Detail.cshtml" />
-    <Content Include="Views\Survey.cshtml" />
+    <Content Include="Views\Home\Survey.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
