@@ -6,89 +6,18 @@ using System.Configuration;
 using Capstone.Web.Models;
 using System.Data.SqlClient;
 
-<<<<<<< HEAD
+
 namespace Capstone.Web.DAL
 {
     public class ForeCastSQLDAL
     {
         public string connectionString = ConfigurationManager.ConnectionStrings["ParkWeather"].ConnectionString;
         public string SQL_GetForecast = @"SELECT * FROM weather WHERE ParkCode = @ParkCode";
-=======
 
-//namespace Capstone.Web.DAL
-//{
-//    public class ForeCastSQLDAL
-//    {
-//        //public string connectionString = ConfigurationManager.ConnectionStrings["ParkWeather"].ConnectionString;
-//        //public string SQL_GetForeCast = @"SELECT * FROM weather WHERE ParkCode = @ParkCode";
+        public List<ForeCast> GetForecast(string ParkCode)
+        {
+            List<ForeCast> fiveDayForeCast = new List<ForeCast>();
 
-//        //public List<ForeCast> GetAllParks()
-//        //{
-//        //    List<ForeCast> fiveDayForeCast = new List<Park>();
-
-//        //    try
-//        //    {
-//        //        using (SqlConnection connection = new SqlConnection(connectionString))
-//        //        {
-//        //            connection.Open();
-//        //            SqlCommand cmd = new SqlCommand(SQL_GetForeCast, connection);
-//        //            SqlDataReader reader = cmd.ExecuteReader();
-//        //            while (reader.Read())
-//        //            {
-
-//        //            }
-//        //        }
-//        //        return allParks;
-//        //    }
-//        //    catch (SqlException)
-//        //    {
-//        //        throw;
-//        //    }
-//        }
-//    }
-//}
->>>>>>> 71094088d16577034d2d4e2bc9d2c2b6b272caf7
-
-//namespace Capstone.Web.DAL
-//{
-//    public class ForeCastSQLDAL
-//    {
-//        public string connectionString = ConfigurationManager.ConnectionStrings["ParkWeather"].ConnectionString;
-//        public string SQL_GetForecast = @"SELECT * FROM weather WHERE ParkCode = @ParkCode";
-
-//        public List<ForeCast> GetForecast(string ParkCode)
-//        {
-//            List<ForeCast> fiveDayForeCast = new List<ForeCast>();
-
-//            try
-//            {
-//                using (SqlConnection connection = new SqlConnection(connectionString))
-//                {
-//                    connection.Open();
-//                    SqlCommand cmd = new SqlCommand(SQL_GetForecast, connection);
-//                    cmd.Parameters.AddWithValue("@ParkCode", ParkCode);
-//                    SqlDataReader reader = cmd.ExecuteReader();
-//                    while (reader.Read())
-//                    {
-//                        ForeCast f = new ForeCast();
-//                        f.FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecast"]);
-//                        f.Low = Convert.ToInt32(reader["low"]);
-//                        f.High = Convert.ToInt32(reader["high"]);
-//                        f.Forecast = Convert.ToString(reader["forecast"]);
-//                        fiveDayForeCast.Add(f);
-//                    }
-//                }
-//                return fiveDayForeCast;
-//            }
-//            catch (SqlException)
-//            {
-//                throw;
-//            }
-//        }
-//    }
-//}
-
-<<<<<<< HEAD
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -116,6 +45,3 @@ namespace Capstone.Web.DAL
         }
     }
 }
-
-=======
->>>>>>> 71094088d16577034d2d4e2bc9d2c2b6b272caf7
