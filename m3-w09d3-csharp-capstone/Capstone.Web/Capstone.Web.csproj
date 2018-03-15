@@ -153,12 +153,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParkController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="DAL\ForeCastSQLDAL.cs" />
     <Compile Include="DAL\ParkSQLDAL.cs" />
     <Compile Include="DAL\SurveySQLDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FavoriteParks.cs" />
     <Compile Include="Models\ForeCast.cs" />
     <Compile Include="Models\Park.cs" />
     <Compile Include="Models\Survey.cs" />
@@ -173,7 +175,8 @@
     <Content Include="Views\Park\Detail.cshtml">
       <BrowseToURL>~/Park/Detail</BrowseToURL>
     </Content>
-    <Content Include="Views\Home\Survey.cshtml" />
+    <Content Include="Views\Survey\Survey.cshtml" />
+    <Content Include="Views\Survey\FavoriteParks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

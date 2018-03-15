@@ -7,24 +7,28 @@
 
 <h2>Survey</h2>
 
-@using (Html.BeginForm("Home", "Survey", FormMethod.Post))
+@using (Html.BeginForm("FavoriteParks", "Survey", FormMethod.Post))
 {
     <div class="formInputGroup">
         @Html.Label("Favorite Park Name", "ParkName")
-        @Html.TextBoxFor(m => m.FavoriteParkName)
+        @Html.DropDownListFor(m => m.FavoriteParkName, Survey.ParkNames)
+        @Html.ValidationMessageFor(m => m.FavoriteParkName)
     </div>
     <div class="formInputGroup">
-        @Html.Label("Email", "Email")
+        @Html.LabelFor(m=> m.Email)
         @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
     </div>
     <div class="formInputGroup">
-        @Html.Label("CustomerExperienceLevel", "Satisfaction Score")
-        @Html.DropDownListFor(m => m.ResidenceState, Survey.States)
+        @Html.LabelFor(m=> m.ResidenceState)
+        @Html.TextBoxFor(m => m.ResidenceState)
+        @Html.ValidationMessageFor(m => m.ResidenceState)
 
     </div>
     <div class="formInputGroup">
-        @Html.Label("CustomerExperienceLevel", "Satisfaction Score")
+        @Html.Label("Activity Level", "Activity Level")
         @Html.DropDownListFor(m => m.ActivityLevel, Survey.ActivityLevels)
+        @Html.ValidationMessageFor(m => m.ActivityLevel)
 
     </div>
 

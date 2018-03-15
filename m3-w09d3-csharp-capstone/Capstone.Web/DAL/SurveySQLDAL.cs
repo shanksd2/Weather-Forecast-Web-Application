@@ -13,7 +13,7 @@ namespace Capstone.Web.DAL
     {
         public string connectionString = ConfigurationManager.ConnectionStrings["ParkWeather"].ConnectionString;
         private const string SQL_AddSurvey = @"INSERT INTO survey_result VALUES (@parkCode, @emailAddress, @state, @activityLevel);";
-
+        public string SQL_GetTopFiveResults = @"SELECT TOP 5 survey_result VALUES (@parkCode, @emailAddress, @state, @activityLevel);";
 
         public void AddSurvey(string parkCode, string emailAddress, string state, string activityLevel)
         {
@@ -39,6 +39,11 @@ namespace Capstone.Web.DAL
             }
 
             return;
+        }
+
+        public void GetTopFiveResults()
+        {
+
         }
     }
 }

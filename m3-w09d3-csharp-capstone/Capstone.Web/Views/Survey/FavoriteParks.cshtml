@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Survey Page";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@using Capstone.Web.Models;
+@model List<Park>
+
+<h2>Favorite Parks</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+        @foreach (Park item in Model)
+        {
+            string imageName = "../Content/img/" + item.ParkCode;
+
+            <div class="list-group">
+                <div class="list-group-item">
+                    <a href="~/Survey/FavoriteParks/@item.ParkCode">
+                        <img class="listImage" src="@imageName" alt="@item.ParkName" />
+                    </a>
+                </div>
+            </div>
+
+
+            <p>@item.ParkName</p>
+            <p>@item.ParkDescription</p>
+        }
+    </div>
+
+
+</body>
+</html>

@@ -3,35 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Capstone.Web.Models
 {
     public class Survey
     {
-       
 
-        public string FavoriteParkName;
-        public string Email;
-        public string ResidenceState;
         public string ActivityLevel;
 
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string FavoriteParkName { get; set; }
 
 
-        public static List<SelectListItem> States
+        [Required]
+        [MinLength(2, ErrorMessage = "State must be abbreviated")]
+        [DataType(DataType.Text)]
+        public string ResidenceState { get; set; }
+
+
+        public static List<SelectListItem> ParkNames
         {
             get
             {
                 return new List<SelectListItem>()
                 {
-                    new SelectListItem { Text = "Ohio", Value = "Ohio" },
-                    new SelectListItem { Text = "Florida", Value = "Florida" },
-                    new SelectListItem { Text = "Arizona", Value = "Arizona" },
-                    new SelectListItem { Text = "Montana", Value = "Montana" },
-                    new SelectListItem { Text = "Tennessee", Value = "Tennessee" },
-                    new SelectListItem { Text = "Wyoming", Value = "Wyoming" },
-                    new SelectListItem { Text = "Washingto", Value = "Washingto" }, //spelled wrong in the database
-                    new SelectListItem { Text = "Colorado", Value = "Colorado" },
-                    new SelectListItem { Text = "California", Value = "California" },
+                    new SelectListItem { Text = "Cuyahoga Valley National Park", Value = "Cuyahoga Valley National Park" },
+                    new SelectListItem { Text = "Everglades National Park", Value = "Everglades National Park" },
+                    new SelectListItem { Text = "Grand Canyon National Park", Value = "Grand Canyon National Park" },
+                    new SelectListItem { Text = "Glacier National Park", Value = "Glacier National Park" },
+                    new SelectListItem { Text = "Great Smoky Mountains National Park", Value = "Tennessee" },
+                    new SelectListItem { Text = "Grand Teton National Park", Value = "Wyoming" },
+                    new SelectListItem { Text = "Mount Rainier National Park", Value = "Washingto" },
+                    new SelectListItem { Text = "Rocky Mountain National Park", Value = "Rocky Mountain National Park" },
+                    new SelectListItem { Text = "Yellowstone National Park", Value = "Yellowstone National Park" },
+                     new SelectListItem { Text = "Yosemite National Park", Value = "Yosemite National Park" },
 
                 };
             }
@@ -50,5 +62,9 @@ namespace Capstone.Web.Models
                 };
             }
         }
+
     }
+
+    
+    
 }
