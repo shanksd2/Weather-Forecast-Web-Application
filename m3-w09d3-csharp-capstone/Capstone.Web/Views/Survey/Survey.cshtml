@@ -11,8 +11,8 @@
 {
     <div class="formInputGroup">
         @Html.Label("Favorite Park Name", "ParkName")
-        @Html.DropDownListFor(m => m.FavoriteParkName, Survey.ParkNames)
-        @Html.ValidationMessageFor(m => m.FavoriteParkName)
+        @Html.DropDownListFor(m => m.FavoriteParkCode, Survey.ParkNames)
+        @Html.ValidationMessageFor(m => m.FavoriteParkCode)
     </div>
     <div class="formInputGroup">
         @Html.LabelFor(m=> m.Email)

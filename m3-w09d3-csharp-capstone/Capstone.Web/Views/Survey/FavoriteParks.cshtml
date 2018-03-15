@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 @using Capstone.Web.Models;
-@model List<Park>
+@model List<Survey>
 
 <h2>Favorite Parks</h2>
 <!DOCTYPE html>
@@ -16,24 +16,18 @@
 <body>
     <div>
 
-        @foreach (Park item in Model)
+        @foreach (Survey item in Model)
         {
-            string imageName = "../Content/img/" + item.ParkCode;
+            string imageName = "../../Content/img/" + item.FavoriteParkCode +".jpg";
 
             <div class="list-group">
                 <div class="list-group-item">
-                    <a href="~/Survey/FavoriteParks/@item.ParkCode">
                         <img class="listImage" src="@imageName" alt="@item.ParkName" />
-                    </a>
                 </div>
             </div>
-
-
             <p>@item.ParkName</p>
-            <p>@item.ParkDescription</p>
+            <p>@item.Rank</p>
         }
     </div>
-
-
 </body>
 </html>

@@ -12,5 +12,11 @@ namespace Capstone.Web.Models
         public int Low { get; set; }
         public int High { get; set; }
         public string Forecast { get; set; }
+
+        public double InCelsius(int FTemp)
+        {
+            double output = ((FTemp * 0.5556) -32);
+            return output;
+        }
     }
 }

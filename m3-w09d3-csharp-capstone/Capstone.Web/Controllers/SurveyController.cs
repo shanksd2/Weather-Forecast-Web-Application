@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Web.Models;
+using Capstone.Web.DAL;
 
 
 namespace Capstone.Web.Controllers
@@ -17,7 +18,9 @@ namespace Capstone.Web.Controllers
 
         public ActionResult FavoriteParks()
         {
-            return View("FavoriteParks");
+            SurveySQLDAL DAL = new SurveySQLDAL();
+            List<Survey> favoriteParks = DAL.GetTopFiveResults();
+            return View("FavoriteParks", favoriteParks);
         }
 
         [HttpPost]
@@ -26,8 +29,11 @@ namespace Capstone.Web.Controllers
 
             if (!ModelState.IsValid)
             {
+
                 return View("Survey", model);
             }
+            SurveySQLDAL DAL = new SurveySQLDAL();
+            DAL.AddSurvey(model);
 
             return RedirectToAction("FavoriteParks", "Survey");
         }

@@ -85,14 +85,14 @@
             }
             else
             {
-                imgPath = "../../Content/img/" + day.Forecast + ".png";
+               imgPath = "../../Content/img/" + day.Forecast + ".png";
             }
             if (day.FiveDayForecastValue == 1)
             {
                 <div class="col-md-4">
                     <h2>Today:</h2>
                     <img class="weatherimgToday" src=@imgPath />
-                    <p><strong>High:</strong> @day.High  <strong>Low:</strong> @day.Low</p> <br />
+                    <p><strong>High:</strong> @day.InCelsius(day.High).ToString("F0")  <strong>Low:</strong> @day.InCelsius(day.Low).ToString("F0")</p> <br />
                     @switch (day.Forecast)
                     {
                         case "snow":
@@ -102,7 +102,7 @@
                             <p>Don't jog in wet clogs, bring raingear today!</p>
                             break;
                         case "thunderstorms":
-                            <p>A blistery day it seems. It is adviced to seek shelter and avoid expose ridges!</p>
+                            <p>A blistery day it seems. It is advised to seek shelter and avoid expose ridges!</p>
                             break;
 
                     }
@@ -122,15 +122,15 @@
             {
                 <div class="col-md-2">
                     <img class="weatherimg" src=@imgPath />
-                    <p><strong>High:</strong> @day.High </p>
-                    <p><strong>Low:</strong> @day.Low</p>
+                    <p><strong>High:</strong>@day.InCelsius(day.High).ToString("F0") </p>
+                    <p><strong>Low:</strong> @day.InCelsius(day.Low).ToString("F0")</p>
                 </div>
             }
         }
     }
 </div>
 <div class="container">
-    @using (Html.BeginForm("DetailCelsius", "Park", FormMethod.Post))
+    @using (Html.BeginForm("Detail", "Park", FormMethod.Post))
     {
         @Html.HiddenFor(m => m.ParkCode, Model.ParkCode)
         @Html.HiddenFor(m => m.ParkName, Model.ParkName)
@@ -147,7 +147,6 @@
         @Html.HiddenFor(m => m.ParkDescription, Model.ParkDescription)
         @Html.HiddenFor(m => m.EntryFee, Model.EntryFee)
         @Html.HiddenFor(m => m.NumberOfAnimalSpecies, Model.NumberOfAnimalSpecies)
-        <button class="btn-primary">Convert To Celsius</button>
+        <button class="btn-primary">Convert To Farenheit</button>
     }
 </div>
-

@@ -13,9 +13,12 @@ namespace Capstone.Web.DAL
     {
         public string connectionString = ConfigurationManager.ConnectionStrings["ParkWeather"].ConnectionString;
         private const string SQL_AddSurvey = @"INSERT INTO survey_result VALUES (@parkCode, @emailAddress, @state, @activityLevel);";
-        public string SQL_GetTopFiveResults = @"SELECT TOP 5 survey_result VALUES (@parkCode, @emailAddress, @state, @activityLevel);";
+        public string SQL_GetTopFiveResults = @"Select park.parkName, COUNT(park.parkName) as parkRank, park.parkCode, Count(park.parkCode) From survey_result 
+                                            Join park on survey_result.parkCode = park.parkCode
+                                            GROUP BY park.parkName, park.ParkCode
+                                            ORDER BY parkRank DESC";
 
-        public void AddSurvey(string parkCode, string emailAddress, string state, string activityLevel)
+        public void AddSurvey(Survey model)
         {
             try
             {
@@ -24,10 +27,10 @@ namespace Capstone.Web.DAL
                     conn.Open();
 
                     SqlCommand sqlCommand = new SqlCommand(SQL_AddSurvey, conn);
-                    sqlCommand.Parameters.AddWithValue(@"parkCode", parkCode);
-                    sqlCommand.Parameters.AddWithValue(@"emailAddress", emailAddress);
-                    sqlCommand.Parameters.AddWithValue(@"state", state);
-                    sqlCommand.Parameters.AddWithValue(@"activityLevel", activityLevel);
+                    sqlCommand.Parameters.AddWithValue(@"parkCode", model.FavoriteParkCode);
+                    sqlCommand.Parameters.AddWithValue(@"emailAddress", model.Email);
+                    sqlCommand.Parameters.AddWithValue(@"state", model.ResidenceState);
+                    sqlCommand.Parameters.AddWithValue(@"activityLevel", model.ActivityLevel);
                     sqlCommand.ExecuteNonQuery();
 
                 }
@@ -41,9 +44,33 @@ namespace Capstone.Web.DAL
             return;
         }
 
-        public void GetTopFiveResults()
+        public List<Survey> GetTopFiveResults()
         {
+            try
+            {
+                List<Survey> topFive = new List<Survey>();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
 
+                    SqlCommand sqlCommand = new SqlCommand(SQL_GetTopFiveResults, conn);
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Survey s = new Survey();
+                        s.FavoriteParkCode = Convert.ToString(reader["parkCode"]);
+                        s.Rank = Convert.ToInt32(reader["parkRank"]);
+                        s.ParkName = Convert.ToString(reader["parkName"]);
+                        topFive.Add(s);
+                    }
+                    return topFive;
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+            }
         }
     }
 }
