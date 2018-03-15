@@ -17,19 +17,22 @@
 
         @foreach (Park item in Model)
         {
-            string imageName = "../Content/img/" + item.ParkCode;
-
-            <div class="list-group">
-                <div class="list-group-item">
+            string imageName = "../../Content/img/" + item.ParkCode + ".jpg";
+            <div class="container">
+                <div class="col-md-6">
                     <a href="~/Park/Detail/@item.ParkCode">
-                <img class="listImage" src="@imageName" alt="@item.ParkName"/>
-                </a>
+                        <img src="@imageName" alt="@item.ParkName" />
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="~/Park/Detail/@item.ParkCode">
+                        <h4>@item.ParkName</h4>
+                    </a>
+                    <p>@item.ParkDescription</p>
+
                 </div>
             </div>
-
-
-            <p>@item.ParkName</p>
-            <p>@item.ParkDescription</p>
+            <br /> <br />
         }
 
     </div>

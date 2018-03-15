@@ -4,59 +4,120 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 @using Capstone.Web.Models
+@using Capstone.Web.DAL
 @model Park
-    @{ string imagePath = "../../Content/img/" + Model.ParkCode + ".jpg";}
+@{ string imagePath = "../../Content/img/" + Model.ParkCode + ".jpg";
+    ForeCastSQLDAL sql = new ForeCastSQLDAL();
+    List<ForeCast> fiveDayWeather = sql.GetForecast(Model.ParkCode);
+}
 
-<div>
-    <img src= @imagePath />
+<div class="container">
+
+    <div class="col-md-6">
+        <img src=@imagePath />
+    </div>
+    <div class="col-md-6">
+        <h4>@Model.ParkName</h4>
+        <div><strong>@Model.State</strong></div>
+        <div>
+            <br/><br/>
+            <table>
+                <tr>
+                    <td><strong>Acreage</strong></td>
+                    <td>@Model.Acreage</td>
+                </tr>
+                <tr>
+                    <td><strong>Elevation</strong></td>
+                    <td>@Model.ElevationInFeet ft.</td>
+                </tr>
+                <tr>
+                    <td><strong>Miles of Trail</strong></td>
+                    <td>@Model.MilesOfTrail miles</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><strong># of Campsites</strong></td>
+                    <td>@Model.NumberOfCampsites</td>
+                </tr>
+                <tr>
+                    <td><strong>Climate</strong></td>
+                    <td>@Model.Climate</td>
+                </tr>
+                <tr>
+                    <td><strong>Year Founded</strong></td>
+                    <td>@Model.YearFounded</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><strong>Annual Visitors</strong></td>
+                    <td>@Model.AnnualVisitorCount</td>
+                </tr>
+                <tr>
+                    <td><strong># Animal Species</strong></td>
+                    <td>@Model.NumberOfAnimalSpecies</td>
+                </tr>
+                <tr>
+                    <td><strong>Entry Fee</strong></td>
+                    <td>@Model.EntryFee.ToString("C2")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
-<div>@Model.ParkName</div>
-<div>@Model.State</div>
-<div>
-    <table>
-        <tr>
-            <td><strong>Acreage</strong></td>
-            <td>@Model.Acreage</td>
-        </tr>
-        <tr>
-            <td><strong>Elevation</strong></td>
-            <td>@Model.ElevationInFeet ft.</td>
-        </tr>
-        <tr>
-            <td><strong>Miles of Trail</strong></td>
-            <td>@Model.MilesOfTrail miles</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td><strong># of Campsites</strong></td>
-            <td>@Model.NumberOfCampsites</td>
-        </tr>
-        <tr>
-            <td><strong>Climate</strong></td>
-            <td>@Model.Climate ft.</td>
-        </tr>
-        <tr>
-            <td><strong>Year Founded</strong></td>
-            <td>@Model.YearFounded miles</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td><strong>Annual Visitors</strong></td>
-            <td>@Model.AnnualVisitorCount</td>
-        </tr>
-        <tr>
-            <td><strong># Animal Species</strong></td>
-            <td>@Model.NumberOfAnimalSpecies ft.</td>
-        </tr>
-        <tr>
-            <td><strong>Entry Fee</strong></td>
-            <td>@Model.EntryFee.ToString("C2") miles</td>
-        </tr>
-    </table>
+<div class="container detailDescription">
+<br/> 
+    <div>@Model.ParkDescription</div>
+<br /> 
+    <div><i>@Model.InspirationalQuote</i> ~ @Model.QuoteSource</div>
 </div>
-<div>@Model.ParkDescription</div>
-<div>@Model.InspirationalQuote @Model.QuoteSource</div>
+<br/><br/><br/>
 
 
+<div class="container jumbotron">
+    @{ foreach (ForeCast day in fiveDayWeather)
+        {
+            string imgPath = "../../Content/img/" + day.Forecast + ".png";
+            if (day.FiveDayForecastValue == 1)
+            {
+                <div class="col-md-4">
+                    <h2>Today:</h2>
+                    <img class ="weatherimgToday" src=@imgPath />
+                    <p><strong>High:</strong> @day.High  <strong>Low:</strong> @day.Low</p> <br/>
+                    @switch (day.Forecast)
+                    {
+                        case "snow":
+                            <p>Don't get stuck in the snow, pack snow shoes today!</p>
+                            break;
+                        case "rain":
+                            <p>Don't jog in wet clogs, bring raingear today!</p>
+                            break;
+                        case "thunderstorms":
+                            <p>A blistery day it seems. It is adviced to seek shelter and avoid expose ridges!</p>
+                            break;
+
+                    }
+                    @if (day.High > 75)
+                    {
+                        <p>What a scorcher! Consider packing extra water.</p>}
+                    else if (day.High - day.Low > 20)
+                    {
+                        <p>Temperature variability makes breathable layers a must!</p>
+                    }
+                    else if (day.Low < 20)
+                    {
+                        <p>Burrr! Don't get caught in the cold unprepared!</p>}
+                </div>
+            }
+            else
+            {
+                <div class="col-md-2">
+                    <img class ="weatherimg" src=@imgPath />
+                    <p><strong>High:</strong> @day.High </p>
+                    <p><strong>Low:</strong> @day.Low</p>
+                </div>
+            }
+        }
+    }
+</div>
