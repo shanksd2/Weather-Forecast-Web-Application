@@ -18,14 +18,5 @@ namespace Capstone.Web.Controllers
             List<Park> allParks = sql.GetAllParks();
             return View("Index", allParks);
         }
-
-        public ActionResult Detail(string id)
-        {
-            ParkSQLDAL dal = new ParkSQLDAL();
-            Park detailedPark = dal.DetailPark(id);
-            return View("Detail", detailedPark);
-        }
-
-      
     }
 }
