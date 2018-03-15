@@ -93,6 +93,5 @@ namespace Capstone.Web.DAL
                 throw;
             }
         }
-
     }
 }

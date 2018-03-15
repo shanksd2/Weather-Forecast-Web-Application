@@ -30,7 +30,7 @@ namespace Capstone.Web.DAL
                     while (reader.Read())
                     {
                         ForeCast f = new ForeCast();
-                        f.FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecast"]);
+                        f.FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]);
                         f.Low = Convert.ToInt32(reader["low"]);
                         f.High = Convert.ToInt32(reader["high"]);
                         f.Forecast = Convert.ToString(reader["forecast"]);
