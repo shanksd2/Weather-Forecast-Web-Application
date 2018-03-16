@@ -92,7 +92,7 @@
                 <div class="col-md-4">
                     <h2>Today:</h2>
                     <img class="weatherimgToday" src=@imgPath />
-                    <p><strong>High:</strong> @day.InCelsius(day.High).ToString("F0")  <strong>Low:</strong> @day.InCelsius(day.Low).ToString("F0")</p> <br />
+                    <p><strong>High:</strong> @day.InCelsius(day.High).ToString("F0")&deg;C  <strong>Low:</strong> @day.InCelsius(day.Low).ToString("F0")&deg;C</p> <br />
                     @switch (day.Forecast)
                     {
                         case "snow":
@@ -122,8 +122,8 @@
             {
                 <div class="col-md-2">
                     <img class="weatherimg" src=@imgPath />
-                    <p><strong>High:</strong>@day.InCelsius(day.High).ToString("F0") </p>
-                    <p><strong>Low:</strong> @day.InCelsius(day.Low).ToString("F0")</p>
+                    <p><strong>High:</strong>@day.InCelsius(day.High).ToString("F0")&deg;C </p>
+                    <p><strong>Low:</strong> @day.InCelsius(day.Low).ToString("F0")&deg;C</p>
                 </div>
             }
         }
