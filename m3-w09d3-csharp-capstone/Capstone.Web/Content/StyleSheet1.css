@@ -1,21 +1,7 @@
 ﻿body {
 }
 
-.container{
 
-}
-
-.container park image{
-
-}
-
-.container park details{
-
-}
-
-.container park name{
-
-}
 
 header {
     margin: 25px;
@@ -25,6 +11,7 @@ header img {
 }
 .parkImages{
     height: 300px;
+    border-radius: 5px;
 }
 .listDescription{
     vertical-align: auto;
@@ -47,4 +34,18 @@ td{
 }
 .weatherimg{
     width: 150px;
+}
+.formInputGroup{
+
+    /*margin-left: auto;
+    margin-right: auto;*/
+}
+.ourlabel{
+
+    text-align:left;
+}
+.field {
+    display: inline;
+    padding-left: 50px;
+    text-align: right;
 }
