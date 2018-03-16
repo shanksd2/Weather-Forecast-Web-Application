@@ -11,30 +11,31 @@
 <head>
     <meta name="viewport" content="width=device-width" />
 </head>
-<body>
 
-    <div>
+      <body>
+          <br /><br />
+          <div>
 
-        @foreach (Park item in Model)
+              @foreach (Park item in Model)
         {
             string imageName = "../../Content/img/" + item.ParkCode + ".jpg";
-            <div class="container">
-                <div class="col-md-6">
-                    <a href="~/Park/Detail/@item.ParkCode">
-                        <img src="@imageName" alt="@item.ParkName" />
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="~/Park/Detail/@item.ParkCode">
-                        <h4>@item.ParkName</h4>
-                    </a>
-                    <p>@item.ParkDescription</p>
+          <div class="container">
+              <div class="col-md-6">
+                  <a href="~/Park/Detail/@item.ParkCode">
+                      <img class="parkImages" src="@imageName" alt="@item.ParkName" />
+                  </a>
+              </div>
+              <div class="col-md-6">
+                  <a href="~/Park/Detail/@item.ParkCode">
+                      <h4>@item.ParkName</h4>
+                  </a>
+                  <p>@item.ParkDescription</p>
 
-                </div>
-            </div>
-            <br /> <br />
-        }
+              </div>
+          </div>
+          <br /> <br />
+}
 
-    </div>
-</body>
+          </div>
+      </body>
 </html>
